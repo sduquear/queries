@@ -2,10 +2,13 @@
 // to "@anthropic-ai/claude-agent-sdk"
 import { query } from "@anthropic-ai/claude-agent-sdk";
 
-const prompt = "";
+const prompt = "Añade una descripción al archivo package.json";
 
 for await (const message of query({
   prompt,
+  options: {
+    allowedTools: ["Edit"]
+  }
 })) {
   console.log(JSON.stringify(message, null, 2));
 }
